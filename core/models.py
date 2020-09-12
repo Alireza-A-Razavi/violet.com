@@ -87,7 +87,7 @@ class OrderItem(models.Model):
 
 
     def __str__(self):
-        return f"{self.quantity} of {self.product.title}"
+        return self.item.title
 
 
 
@@ -118,10 +118,7 @@ class ContactTicket(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        if self.user:
-            return f"{self.user.username} has sent the {self.subject} ticket"
-        else:
-            return f"{self.first_name} {self.last_name} has sent the {self.subject} ticket as anounymos user"
+        return self.first_name
 
 class Subscription(models.Model):
     email = models.EmailField(unique=True)
